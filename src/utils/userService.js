@@ -1,5 +1,4 @@
 import tokenService from './tokenService';
-
 const BASE_URL = '/api/users/';
 
 function signup(user) {
@@ -13,11 +12,19 @@ function signup(user) {
       throw new Error('Email already taken!');
     })
     // Parameter destructuring!
-    .then(({ token }) => {
-    tokenService.setToken(token);
-  })
+    .then(({ token }) => tokenService.setToken(token))
 }
 
+function getUser() {
+    return tokenService.getUserFromToken();
+}
+
+function logout() {
+    tokenService.removeToken();
+  }
+
 export default {
-  signup
+  signup,
+  getUser,
+  logout
 };

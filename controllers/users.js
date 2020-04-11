@@ -29,4 +29,4 @@ function createJWT(user) {
       SECRET,
       {expiresIn: '24h'}
     );
-  }
+}
