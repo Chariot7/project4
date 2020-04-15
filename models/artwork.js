@@ -12,7 +12,10 @@ const artworkSchema = new Schema({
     signature: {
         type: String,
     },
-    // createdBy: [{ type: Schema.Types.OnjectId, ref: 'Artist' }]
+    createdBy: [{ 
+        type: Schema.Types.ObjectId, 
+        ref: 'Artist' 
+    }]
 }, {
     timestamps: true
 });

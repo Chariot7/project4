@@ -1,5 +1,5 @@
+// const Artist = require('../../models/artist')
 const Artwork = require('../../models/artwork')
-const Artist = require('../../models/artist')
 
 module.exports = {
     index,
@@ -9,19 +9,13 @@ module.exports = {
 }
 
 async function index(req, res) {
-    console.log('index function')
     const artworks = await Artwork.find({});
-    console.log(artworks)
     res.status(200).json(artworks);
 }
 
 
 async function create(req, res) {
-    console.log('create function')
-    console.log(req.body)
   const artwork = await Artwork.create(req.body);
-  console.log('after')
-  console.log(artwork)
   res.status(201).json(artwork)
 }
 

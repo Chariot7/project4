@@ -6,8 +6,10 @@ class AddArtworkPage extends Component {
         formData: {
             title: '',
             year: '',
-            signature: 'yes'
-        }
+            signature: 'yes',
+            createdBy: []
+        },
+        
     };
 
     formRef = React.createRef();
@@ -25,6 +27,14 @@ class AddArtworkPage extends Component {
             invalidForm: !this.formRef.current.checkValidity()
         });
     };
+
+    // handleChangeArtist = e => {
+    //     const formDataRef = {...this.state.formDataRef, [e.target.name]: e.target.value};
+    //     this.setState({
+    //         formData,
+    //         invalidForm: !this.formRef.current.checkValidity()
+    //     });
+    // };
 
     render() {
         return (

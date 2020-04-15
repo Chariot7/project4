@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {Route, NavLink, withRouter} from 'react-router-dom';
 import * as artworkAPI from './services/artworks-api'
+import * as artistAPI from './services/artists-api'
 import SignupForm from './components/SignupForm/SignupForm';
 import userService from './utils/userService'
 // import { Switch, Route } from 'react-router-dom'
@@ -15,17 +16,20 @@ import EditArtworkPage from './pages/EditArtworkPage/EditArtworkPage'
 class App extends React.Component {
   state = {
     user: userService.getUser(),
-    artworks: []
+    artworks: [],
+    artists: []
   }
 
   handleAddArtwork = async newArtData => {
     console.log('addArt function')
     const newArt = await artworkAPI.create(newArtData);
+    const newArtist = await artistAPI.create(newArtData)
     // console.log(newArt)
     // console.log(newArtData)
     console.log(this.props)
     this.setState(state => ({
-      artworks: [...state.artworks, newArt]
+      artworks: [...state.artworks, newArt],
+      artists: [...state.artists, newArtist]
     }),
     () => this.props.history.push('/artworks'));
   }
@@ -89,7 +93,8 @@ class App extends React.Component {
         } />
         <Route exact path='/artworks' render={() => 
             <ArtworkListPage
-              artworks={this.state.artworks}
+              // artworks={this.state.artworks}
+              artists={this.state.artists}
               handleDeleteArtwork={this.handleDeleteArtwork}
             />
           } />
