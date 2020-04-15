@@ -7,7 +7,7 @@ class AddArtworkPage extends Component {
             title: '',
             year: '',
             signature: 'yes',
-            createdBy: []
+            name: ''
         },
         
     };

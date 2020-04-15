@@ -15,6 +15,9 @@ async function index(req, res) {
 
 
 async function create(req, res) {
+    console.log('this is create')
+    console.log(req.body)
+    console.log(req.user)
   const artwork = await Artwork.create(req.body);
   res.status(201).json(artwork)
 }

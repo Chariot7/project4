@@ -23,13 +23,13 @@ class App extends React.Component {
   handleAddArtwork = async newArtData => {
     console.log('addArt function')
     const newArt = await artworkAPI.create(newArtData);
-    const newArtist = await artistAPI.create(newArtData)
+    // const newArtist = await artistAPI.create(newArtData)
     // console.log(newArt)
     // console.log(newArtData)
     console.log(this.props)
     this.setState(state => ({
       artworks: [...state.artworks, newArt],
-      artists: [...state.artists, newArtist]
+      // artists: [...state.artists, newArtist]
     }),
     () => this.props.history.push('/artworks'));
   }
@@ -93,8 +93,8 @@ class App extends React.Component {
         } />
         <Route exact path='/artworks' render={() => 
             <ArtworkListPage
-              // artworks={this.state.artworks}
-              artists={this.state.artists}
+              artworks={this.state.artworks}
+              // artists={this.state.artists}
               handleDeleteArtwork={this.handleDeleteArtwork}
             />
           } />
