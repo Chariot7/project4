@@ -1,5 +1,6 @@
 // const Artist = require('../../models/artist')
 const Artwork = require('../../models/artwork')
+const User = require('../../models/user')
 
 module.exports = {
     index,
@@ -16,9 +17,12 @@ async function index(req, res) {
 
 async function create(req, res) {
     console.log('this is create')
-    console.log(req.body)
-    console.log(req.user)
+    console.log(req.body.user)
+    const user = await User.findById(req.body.user._id)
   const artwork = await Artwork.create(req.body);
+  user.artworks.push(artwork)
+  user.save()
+  console.log(user)
   res.status(201).json(artwork)
 }
 

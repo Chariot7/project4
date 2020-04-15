@@ -7,7 +7,7 @@ class AddArtworkPage extends Component {
             title: '',
             year: '',
             signature: 'yes',
-            name: ''
+            // name: '',
         },
         
     };
@@ -21,7 +21,7 @@ class AddArtworkPage extends Component {
     };
 
     handleChange = e => {
-        const formData = {...this.state.formData, [e.target.name]: e.target.value};
+        const formData = {...this.state.formData, [e.target.name]: e.target.value, user: this.props.user};
         this.setState({
             formData,
             invalidForm: !this.formRef.current.checkValidity()

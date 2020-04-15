@@ -96,10 +96,11 @@ class App extends React.Component {
               artworks={this.state.artworks}
               // artists={this.state.artists}
               handleDeleteArtwork={this.handleDeleteArtwork}
-            />
-          } />
+              />
+            } />
            <Route exact path='/add' render={() => 
             <AddArtworkPage
+              user={this.state.user}
               handleAddArtwork={this.handleAddArtwork}
             />
           } />
