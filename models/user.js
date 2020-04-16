@@ -8,10 +8,6 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
-  artworks: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Artwork'
-  }],
 }, {
   timestamps: true
 });

@@ -15,7 +15,11 @@ const artworkSchema = new Schema({
     createdBy: [{ 
         type: Schema.Types.ObjectId, 
         ref: 'Artist' 
-    }]
+    }],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, {
     timestamps: true
 });

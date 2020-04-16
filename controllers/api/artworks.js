@@ -1,4 +1,4 @@
-// const Artist = require('../../models/artist')
+const Artist = require('../../models/artist')
 const Artwork = require('../../models/artwork')
 const User = require('../../models/user')
 
@@ -17,13 +17,24 @@ async function index(req, res) {
 
 async function create(req, res) {
     console.log('this is create')
-    console.log(req.body.user)
-    const user = await User.findById(req.body.user._id)
-  const artwork = await Artwork.create(req.body);
-  user.artworks.push(artwork)
-  user.save()
-  console.log(user)
-  res.status(201).json(artwork)
+    console.log(req.user)
+    let artistInfo = {name: req.body.name}
+    const artist = await Artist.create(artistInfo)
+    console.log(artist, 'this is artist')
+    let artInfo = {
+        title: req.body.title,
+        year: req.body.year,
+        signature: req.body.signature,
+        user: req.user._id,
+        artist: artist._id
+    }
+    console.log(req.body)
+    const artwork = await Artwork.create(artInfo);
+    artistAndArtwork = {
+        artist,
+        artwork
+    }
+    res.status(201).json(artistAndArtwork)
 }
 
 async function deleteOne(req, res) {
