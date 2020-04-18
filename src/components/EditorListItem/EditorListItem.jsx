@@ -1,46 +1,13 @@
-import React, {Component} from 'react';
-import { render } from '@testing-library/react';
-import './WallPage.css'
+import React from 'react';
 
-class WallPage extends Component {
-    state = {
-        formData: {
-            height: 50,
-            width: 50,
-            rotate: 0,
-            colorRed: 0,
-            colorBlue: 0,
-            colorGreen: 0,
-            text: '',
-            fontSize: 150,
-            textRotate: 0,
-            border: 6,
-            amount: [1,1]
-        }
-    }
-
-
-formRef = React.createRef();
-
-handleChange = e => {
-    console.log(this.state.formData.height)
-    const formData = {
-        ...this.state.formData,
-        [e.target.name]: e.target.value
-    }
-    this.setState({
-        formData
-    });
-};
-
-render() {
-    return ( 
+function EditorListItem({inputData}) {
+    return (
         <>
-        {/* {this.state.amount.map(num => 
+        {this.state.amount.map(num => 
             <EditorListItem
                 inputData={this.state.formData}
             />
-            )} */}
+            )}
         <ul>
         <li>
         <div className="form-group">
@@ -145,6 +112,4 @@ render() {
     )
 }
 
-}
-
-export default WallPage;
+export default EditorListItem
