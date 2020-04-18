@@ -12,6 +12,9 @@ class WallPage extends Component {
             colorRed: 0,
             colorBlue: 0,
             colorGreen: 0,
+            backgroundRed: 0,
+            backgroundBlue:0,
+            backgroundGreen: 0,
             text: '',
             fontSize: 150,
             textRotate: 0,
@@ -19,7 +22,8 @@ class WallPage extends Component {
             amount: 3,
             amountArr: [],
             switchRotate: false,
-        }
+        },
+        backgroundSelected: false,
     }
 
 
@@ -59,9 +63,23 @@ handleChangeTwo = e => {
     console.log(this.state.formData.switchRotate)
 };
 
+handleChangeThree = e => {
+    const backgroundSelected = !this.state.backgroundSelected
+    this.setState({
+        backgroundSelected
+    });
+    console.log(this.state.backgroundSelected, 'this is background selected')
+};
+
+handleBackgroundSelected = e => {
+    this.props.handleBackground(this.state.background)
+}
+
 render() {
     return ( 
-        <>
+        < div style={{
+            backgroundColor: `rgb(${this.state.formData.backgroundRed},${this.state.formData.backgroundGreen},${this.state.formData.backgroundBlue})` 
+        }}>
        
          <ul>
         <li>
@@ -98,9 +116,17 @@ render() {
         </li>
         <li>
         <div className="form-group">
+        <label>Background Color</label>
+            <div className="slidecontainer">
+                <input name="backgroundSelected" type="checkbox"  onChange={this.handleChangeThree} class="slider" id="myRangeTwo"/>
+            </div>
+        </div>
+        </li>
+        <li>
+        <div className="form-group">
         <label> Color Red</label>
             <div className="slidecontainer">
-                <input name="colorRed" type="range" min="0" max="255" value={this.state.formData.colorRed} onChange={this.handleChange}class="slider" id="myRangeTwo"/>
+    <input name={this.state.backgroundSelected ? "backgroundRed" : "colorRed"} type="range" min="0" max="255" value={this.state.backgroundSelected ? this.state.formData.backgroundRed : this.state.formData.colorRed} onChange={this.handleChange}class="slider" id="myRangeTwo"/>
             </div>
         </div>
         </li>
@@ -108,7 +134,7 @@ render() {
         <div className="form-group">
         <label> Color Green</label>
             <div className="slidecontainer">
-                <input name="colorGreen" type="range" min="0" max="255" value={this.state.formData.colorGreen} onChange={this.handleChange}class="slider" id="myRangeTwo"/>
+                <input name={this.state.backgroundSelected ? "backgroundGreen" : "colorGreen"} type="range" min="0" max="255" value={this.state.backgroundSelected ? this.state.formData.backgroundGreen : this.state.formData.colorGreen} onChange={this.handleChange}class="slider" id="myRangeTwo"/>
             </div>
         </div>
         </li>
@@ -116,7 +142,7 @@ render() {
         <div className="form-group">
         <label> Color Blue</label>
             <div className="slidecontainer">
-                <input name="colorBlue" type="range" min="0" max="255" value={this.state.formData.colorBlue} onChange={this.handleChange}class="slider" id="myRangeTwo"/>
+                <input name={this.state.backgroundSelected ? "backgroundBlue" : "colorBlue"} type="range" min="0" max="255" value={this.state.backgroundSelected ? this.state.formData.backgroundBlue : this.state.formData.colorBlue} onChange={this.handleChange}class="slider" id="myRangeTwo"/>
             </div>
         </div>
         </li>
@@ -132,7 +158,7 @@ render() {
         <div className="form-group">
         <label>Switch Rotate</label>
             <div className="slidecontainer">
-                <input name="switchRotate" type="checkbox" defultChecked={this.state.switchRotate} onChange={this.handleChangeTwo} class="slider" id="myRangeTwo"/>
+                <input name="switchRotate" type="checkbox"  onChange={this.handleChangeTwo} class="slider" id="myRangeTwo"/>
             </div>
         </div>
         </li>
@@ -166,7 +192,7 @@ render() {
         }}>
        {this.createAmount()}
        </ul>
-      </>
+      </div>
     )
 }
 

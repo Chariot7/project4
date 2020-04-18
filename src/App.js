@@ -21,7 +21,7 @@ class App extends React.Component {
     user: userService.getUser(),
     artworks: [],
     artists: [],
-    walls: []
+    walls: [],
   }
 
   handleAddArtwork = async newArtData => {
@@ -47,12 +47,13 @@ class App extends React.Component {
       )
   }
   
-  handleDeleteArtwork= async id => {
+  handleDeleteArtwork = async id => {
     await artworkAPI.deleteOne(id);
     this.setState(state => ({
       artworks: state.artworks.filter(a => a._id !==id)
     }), () => this.props.history.push('/artworks'));
   }
+
 
   handleLogout = () => {
     userService.logout();
@@ -100,7 +101,9 @@ class App extends React.Component {
             {/* <NavLink exact to='/signup'>SIGN UP</NavLink> */}
           </nav>
         </header>
-        <main>
+        <main style={{
+          // backgroundColor: `rgb(${this.state.background.red},50,50)`
+        }}>
         <Route exact path='/signup' render={() => 
           <SignupForm
            handleSignupOrLogin={this.handleSignupOrLogin} 
@@ -128,7 +131,8 @@ class App extends React.Component {
           } />
 
            <Route exact path='/wall' render={() => 
-            <WallPage/>
+            <WallPage
+            />
         } />
            <Route exact path='/details' render={({location}) => 
             <ArtworkDetailsPage
