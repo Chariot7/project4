@@ -1,6 +1,7 @@
 const BASE_URL = '/api/artists';
 
 export function getAll() {
+    console.log('getall')
     return fetch(BASE_URL)
     .then(res => res.json());
 }

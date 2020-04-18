@@ -11,16 +11,20 @@ module.exports = {
 
 async function index(req, res) {
     const artworks = await Artwork.find({});
-    res.status(200).json(artworks);
+    const artists = await Artist.find({});
+    const both = {
+        artists: artists,
+        artworks: artworks
+    }
+    res.status(200).json(both);
 }
 
 
 async function create(req, res) {
-    console.log('this is create')
-    console.log(req.user)
+    console.log(req.body, 'this is req.body')
+    console.log(req.user, 'this is req.user')
     let artistInfo = {name: req.body.name}
     const artist = await Artist.create(artistInfo)
-    console.log(artist, 'this is artist')
     let artInfo = {
         title: req.body.title,
         year: req.body.year,
@@ -28,7 +32,7 @@ async function create(req, res) {
         user: req.user._id,
         artist: artist._id
     }
-    console.log(req.body)
+    console.log(artInfo, 'artistInfo')
     const artwork = await Artwork.create(artInfo);
     artistAndArtwork = {
         artist,

@@ -12,6 +12,15 @@ const artworkSchema = new Schema({
     signature: {
         type: String,
     },
+    artist: {
+        type: String,
+    },
+    height: {
+        type: Number,
+    },
+    width: {
+        type: Number,
+    },
     createdBy: [{ 
         type: Schema.Types.ObjectId, 
         ref: 'Artist' 

@@ -15,6 +15,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-slider": "^1.0.3",
     "serve-favicon": "^2.5.0"
   },
   "scripts": {
@@ -38,5 +39,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "@types/react-slider": "^1.0.0"
+  }
 }

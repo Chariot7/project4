@@ -20,8 +20,8 @@ module.exports = {
 // }
 
 async function index(req, res) {
-    const allArist = await Artist.find({});
-    res.status(200),json(allArist)
+    const allArtist = await Artist.find({});
+    res.status(200),json(allArtist)
 }
 
 async function addToCreatedBy(req, res) {
