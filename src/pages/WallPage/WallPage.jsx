@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { render } from '@testing-library/react';
 import './WallPage.css'
+import EditorListItem from '../../components/EditorListItem/EditorListItem'
 
 class WallPage extends Component {
     state = {
@@ -15,15 +16,29 @@ class WallPage extends Component {
             fontSize: 150,
             textRotate: 0,
             border: 6,
-            amount: [1,1]
+            amount: 3,
+            amountArr: [],
+            switchRotate: false,
         }
     }
 
 
 formRef = React.createRef();
 
+createAmount = () => {
+    let amountArr = []
+
+    for(let i = 0; i<this.state.formData.amount; i++){
+        amountArr.push(<EditorListItem
+        inputData={this.state.formData}
+        handleChange={this.handleChange}
+        idx={i}
+    />)
+    }
+    return amountArr
+}
+
 handleChange = e => {
-    console.log(this.state.formData.height)
     const formData = {
         ...this.state.formData,
         [e.target.name]: e.target.value
@@ -32,16 +47,31 @@ handleChange = e => {
         formData
     });
 };
+handleChangeTwo = e => {
+    console.log(e.target)
+    const formData = {
+        ...this.state.formData,
+        switchRotate: !this.state.formData.switchRotate
+    }
+    this.setState({
+        formData
+    });
+    console.log(this.state.formData.switchRotate)
+};
 
 render() {
     return ( 
         <>
-        {/* {this.state.amount.map(num => 
-            <EditorListItem
-                inputData={this.state.formData}
-            />
-            )} */}
-        <ul>
+       
+         <ul>
+        <li>
+        <div className="form-group">
+        <label>Amount</label>
+            <div className="slidecontainer">
+                <input orient="vertical" name="amount" type="range" min="0" max="100" value={this.state.formData.amount} onChange={this.handleChange}class="slider" id="myRange"/>
+            </div>
+        </div>
+        </li>
         <li>
         <div className="form-group">
         <label>Height</label>
@@ -100,6 +130,14 @@ render() {
         </li>
         <li>
         <div className="form-group">
+        <label>Switch Rotate</label>
+            <div className="slidecontainer">
+                <input name="switchRotate" type="checkbox" defultChecked={this.state.switchRotate} onChange={this.handleChangeTwo} class="slider" id="myRangeTwo"/>
+            </div>
+        </div>
+        </li>
+        <li>
+        <div className="form-group">
         <label> Text</label>
             <div className="slidecontainer">
                 <input name="text" type="text"  value={this.state.formData.text} onChange={this.handleChange}class="slider" id="myRangeTwo"/>
@@ -123,24 +161,11 @@ render() {
         </div>
         </li>
         </ul>
-        <div style={{
-            height: `${this.state.formData.height}px`,
-            width: `${this.state.formData.width}pt`,
-            transform: `rotate(${this.state.formData.rotate}deg)`,
-            // height: 100,
-            border: `${this.state.formData.border}px solid rgb(${this.state.formData.colorRed},${this.state.formData.colorGreen},${this.state.formData.colorBlue})`,
-            left: `${this.state.formData.height}px`,
-            top: `150px`
-        }} >
-            <h1 style={{
-                fontSize: `${this.state.formData.fontSize}px`,
-                transform: `rotate(${this.state.formData.textRotate}deg)`,
-                color: `rgb(${this.state.formData.colorRed},${this.state.formData.colorGreen},${this.state.formData.colorBlue})`,
-                
-            }}>{this.state.formData.text}
-            </h1>
-            </div>
-        
+        <ul style={{
+            // transform: `rotate(-${this.state.formData.rotate}deg)`
+        }}>
+       {this.createAmount()}
+       </ul>
       </>
     )
 }
