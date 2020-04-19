@@ -21,6 +21,7 @@ function EditorListItem({inputData, handleChange, switchRotate, idx}) {
                 transform: `rotate(${inputData.textRotate}deg)`,
                 color: `rgb(${inputData.colorRed},${inputData.colorGreen},${inputData.colorBlue})`,
                 
+                
             }}>{inputData.text}
             </h1>
             </div>

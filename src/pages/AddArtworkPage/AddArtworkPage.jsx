@@ -80,7 +80,7 @@ class AddArtworkPage extends Component {
           </div>
           <div className="form-group">
             <label>Artist Name</label>
-            <select value={this.state.formData.name} onChange={this.handleChange}>
+            <select  onChange={this.handleChange}>
               {this.props.artists.map((artist, index) => 
             <option key={index} value="{artist.name}">{artist.name}</option>
               )}
@@ -88,7 +88,7 @@ class AddArtworkPage extends Component {
           </div>
           <div className="form-group">
             <label>Previous Artworks</label>
-            <select value={this.state.formData.name} onChange={this.handleChange}>
+            <select  onChange={this.handleChange}>
               {this.props.artworks.map(artwork => 
             <option key={artwork.title} value="{artwork.title}">{artwork.title}</option>
               )}

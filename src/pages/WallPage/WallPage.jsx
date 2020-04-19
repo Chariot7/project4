@@ -26,6 +26,8 @@ class WallPage extends Component {
         backgroundSelected: false,
     }
 
+    
+    
 
 formRef = React.createRef();
 
@@ -76,6 +78,7 @@ handleBackgroundSelected = e => {
 }
 
 render() {
+    
     return ( 
         < div style={{
             backgroundColor: `rgb(${this.state.formData.backgroundRed},${this.state.formData.backgroundGreen},${this.state.formData.backgroundBlue})` 
@@ -192,6 +195,9 @@ render() {
         }}>
        {this.createAmount()}
        </ul>
+       <div style={{
+           height: '60vh'
+       }}></div>
       </div>
     )
 }
