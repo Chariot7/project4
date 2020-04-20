@@ -21,13 +21,18 @@ export function create(art) {
 export function update(art) {
     return fetch(`${BASE_URL}/${art._id}`, {
         method: 'PUT',
-        headers: {'content-type': 'application/json'},
+        headers: {'content-type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+    },
         body: JSON.stringify(art)
     }).then(res => res.json())
 }
 
 export function deleteOne(id) {
     return fetch(`${BASE_URL}/${id}`, {
-        method: 'Delete'
+        method: 'Delete',
+        headers: {'content-type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+    },
     }).then(res => res.json())
 }

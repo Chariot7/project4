@@ -61,7 +61,7 @@ class App extends React.Component {
   }
 
   handleSignupOrLogin = () => {
-    this.setState({ user: userService.getUser() })
+    this.setState({ user: userService.getUser() }, () => this.props.history.push('/wall'))
   }
 
   async componentDidMount() {
