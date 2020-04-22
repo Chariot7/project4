@@ -97,7 +97,7 @@ class App extends React.Component {
             <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
             &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/artworks'>ARTWORKS</NavLink>
-            <NavLink exact to='/editor'>Editor</NavLink>
+            <NavLink exact to='/editor'>EDITOR</NavLink>
             &nbsp;&nbsp;&nbsp;
             {/* <NavLink exact to='/signup'>SIGN UP</NavLink> */}
           </nav>
