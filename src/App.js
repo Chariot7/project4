@@ -14,7 +14,7 @@ import ArtworkListPage from './pages/ArtworkListPage/ArtworkListPage'
 import AddArtworkPage from './pages/AddArtworkPage/AddArtworkPage'
 import ArtworkDetailsPage from './pages/ArtworkDetailsPage/ArtworkDetailsPage'
 import EditArtworkPage from './pages/EditArtworkPage/EditArtworkPage'
-import WallPage from './pages/WallPage/WallPage'
+import EditorPage from './pages/EditorPage/EditorPage'
 
 class App extends React.Component {
   state = {
@@ -61,7 +61,7 @@ class App extends React.Component {
   }
 
   handleSignupOrLogin = () => {
-    this.setState({ user: userService.getUser() }, () => this.props.history.push('/wall'))
+    this.setState({ user: userService.getUser() }, () => this.props.history.push('/editor'))
   }
 
   async componentDidMount() {
@@ -97,6 +97,7 @@ class App extends React.Component {
             <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
             &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/artworks'>ARTWORKS</NavLink>
+            <NavLink exact to='/editor'>Editor</NavLink>
             &nbsp;&nbsp;&nbsp;
             {/* <NavLink exact to='/signup'>SIGN UP</NavLink> */}
           </nav>
@@ -130,8 +131,8 @@ class App extends React.Component {
             />
           } />
 
-           <Route exact path='/wall' render={() => 
-            <WallPage
+           <Route exact path='/editor' render={() => 
+            <EditorPage
             />
         } />
            <Route exact path='/details' render={({location}) => 

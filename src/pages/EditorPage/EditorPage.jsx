@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { render } from '@testing-library/react';
-import './WallPage.css'
+import './EditorPage.css'
 import EditorListItem from '../../components/EditorListItem/EditorListItem'
 
-class WallPage extends Component {
+class EditorPage extends Component {
     state = {
         formData: {
             height: 50,
@@ -265,4 +265,4 @@ render() {
 
 }
 
-export default WallPage;
+export default EditorPage;
